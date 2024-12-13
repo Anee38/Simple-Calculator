@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 30px;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            background-color: #ff1269;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            color: black;
+            border: 2px solid #ff1269;
+            border-radius: 10px;
+            background-color: white;
+        }
+
+        .output {
+            font-size: 1.2rem;
+            color: #007bff;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Simple Calculator</h1>
+        <button onclick="openPrompt()">Start Calculator</button>
+        <div id="output" class="output"></div>
+    </div>
+    <script>
+        function openPrompt() {
+            let a = prompt("Enter your first number as num1: ");
+            let b = prompt("Enter your second number as num2: ");
+
+            // Convert the input values to floats
+            let c = parseFloat(a);
+            let d = parseFloat(b);
+
+            // Check if inputs are valid
+            if (isNaN(c) || isNaN(d)) {
+                document.getElementById("output").innerHTML = "Please enter valid numbers.";
+                return;
+            }
+
+            // Function for addition
+            function add(num1, num2) {
+                return num1 + num2;
+            }
+
+            // Function for subtraction
+            function subtract(num1, num2) {
+                return num1 - num2;
+            }
+
+            // Function for multiplication
+            function multiply(num1, num2) {
+                return num1 * num2;
+            }
+
+            // Function for division
+            function division(num1, num2) {
+                return num1 / num2;
+            }
+
+            let addOp = add(c, d);
+            let minusOp = subtract(c, d);
+            let multiplyOp = multiply(c, d);
+            let divideOp = division(c, d);
+
+            // Display results after operations
+            setTimeout(() => {
+                document.getElementById("output").innerHTML = `
+                    <p><strong>Num 1 is :- ${a}</p>
+                    <p>Num 2 is :- ${b}</p>
+                    <p>The addition of num1 and num2 is :- ${addOp}</p>
+                    <p>The subtraction of num1 and num2 is :- ${minusOp}</p>
+                    <p>The multiplication of num1 and num2 is :- ${multiplyOp}</p>
+                    <p>The division of num1 and num2 is :- ${divideOp}</p>
+                `;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
